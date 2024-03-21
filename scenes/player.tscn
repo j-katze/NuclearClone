@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dijp1h1ucx30s"]
+
+[ext_resource type="Texture2D" uid="uid://cj5o5jx3rnx3w" path="res://art/cathurt.png" id="1_d20jv"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jc7iv"]
+[ext_resource type="Texture2D" uid="uid://bbi55ns4iors1" path="res://art/catstand.png" id="2_h65eb"]
+[ext_resource type="Texture2D" uid="uid://dpyi7hlh4og2j" path="res://art/catwalk1.png" id="3_i3tkm"]
+[ext_resource type="Texture2D" uid="uid://b2eytpkamxpcq" path="res://art/catwalk2.png" id="4_ryj22"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myi72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d20jv")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h65eb")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i3tkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ryj22")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf1dp"]
+
+[node name="Player" type="Area2D"]
+position = Vector2(393, 426)
+script = ExtResource("1_jc7iv")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_myi72")
+animation = &"stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yf1dp")
