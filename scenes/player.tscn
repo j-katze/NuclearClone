@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dijp1h1ucx30s"]
+[gd_scene load_steps=9 format=3 uid="uid://dijp1h1ucx30s"]
 
 [ext_resource type="Texture2D" uid="uid://cj5o5jx3rnx3w" path="res://art/cathurt.png" id="1_d20jv"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jc7iv"]
 [ext_resource type="Texture2D" uid="uid://bbi55ns4iors1" path="res://art/catstand.png" id="2_h65eb"]
 [ext_resource type="Texture2D" uid="uid://dpyi7hlh4og2j" path="res://art/catwalk1.png" id="3_i3tkm"]
 [ext_resource type="Texture2D" uid="uid://b2eytpkamxpcq" path="res://art/catwalk2.png" id="4_ryj22"]
+[ext_resource type="PackedScene" uid="uid://hxh0plu5p4ak" path="res://scenes/gun.tscn" id="6_oon6g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_myi72"]
 animations = [{
@@ -49,3 +50,6 @@ animation = &"stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yf1dp")
+
+[node name="Gun" parent="." instance=ExtResource("6_oon6g")]
+position = Vector2(-1, 5)
