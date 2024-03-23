@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 400
+@export var speed = 100
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
@@ -19,8 +19,10 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	if velocity.x == 0 && velocity.y == 0:
 		$AnimatedSprite2D.animation = "stand"
+		$AnimatedSprite2D.speed_scale = 1
 	elif velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.speed_scale = 5
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "walk"
