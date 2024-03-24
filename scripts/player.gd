@@ -16,7 +16,7 @@ func _process(delta):
 	movedir.x = - Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	var velocity = movedir.limit_length(1) * speed 
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp(Vector2.ZERO, screen_size)
 	if velocity.x == 0 && velocity.y == 0:
 		$AnimatedSprite2D.animation = "stand"
 		$AnimatedSprite2D.speed_scale = 1
