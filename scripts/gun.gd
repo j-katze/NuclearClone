@@ -9,3 +9,7 @@ func _ready():
 func _process(_delta):
 	look_at(get_global_mouse_position())
 	$AnimatedSprite2D.flip_v = get_global_mouse_position().x < get_parent().position.x
+	if get_global_mouse_position().y < get_parent().position.y:
+		z_index = -1
+	else:
+		z_index = 1

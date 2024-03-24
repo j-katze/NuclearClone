@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://hxh0plu5p4ak"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_ex636"]
-[ext_resource type="Texture2D" uid="uid://cu1rws36tpynf" path="res://art/gun.png" id="2_m3ume"]
+[ext_resource type="Texture2D" uid="uid://cby7qlkkpsehm" path="res://art/revolver.png" id="2_wqne4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqhp2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_m3ume")
+"texture": ExtResource("2_wqne4")
 }],
 "loop": true,
 "name": &"default",
@@ -20,15 +20,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_he8wv"]
-size = Vector2(14, 8)
+size = Vector2(11, 8)
 
 [node name="Gun" type="Area2D"]
 script = ExtResource("1_ex636")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, -1)
+position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_eqhp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -1)
+position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_he8wv")
+metadata/_edit_group_ = true

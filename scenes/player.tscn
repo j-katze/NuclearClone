@@ -167,9 +167,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf1dp"]
+radius = 7.0
+height = 20.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(393, 426)
+z_index = 10
 script = ExtResource("1_jc7iv")
 metadata/_edit_group_ = true
 
@@ -178,8 +180,8 @@ sprite_frames = SubResource("SpriteFrames_myi72")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_yf1dp")
 
 [node name="Gun" parent="." instance=ExtResource("6_oon6g")]
-visible = false
-position = Vector2(-1, 5)
+position = Vector2(0, 6)

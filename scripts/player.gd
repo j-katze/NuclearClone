@@ -20,9 +20,8 @@ func _process(delta):
 	if velocity.x == 0 && velocity.y == 0:
 		$AnimatedSprite2D.animation = "stand"
 		$AnimatedSprite2D.speed_scale = 1
-	elif velocity.x != 0:
+	else:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.speed_scale = 5
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "walk"
+	$AnimatedSprite2D.flip_h = get_global_mouse_position().x < position.x
+

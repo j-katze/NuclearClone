@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhly0o25kt6s"]
+
+[ext_resource type="Script" path="res://scripts/cursor.gd" id="1_sdblp"]
+[ext_resource type="Texture2D" uid="uid://ec7o0pai3dr7" path="res://art/cursor.png" id="2_rlktc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ffgvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rlktc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cursor" type="Area2D"]
+script = ExtResource("1_sdblp")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ffgvf")
