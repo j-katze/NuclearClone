@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbi55ns4iors1"
-path="res://.godot/imported/catstand.png-b8f1b4dd05400b3162073b9dd960fcc7.ctex"
+uid="uid://dyuvi1vt3inec"
+path="res://.godot/imported/frorg.png-8b938d858b28721f8969c3811272bb42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/catstand.png"
-dest_files=["res://.godot/imported/catstand.png-b8f1b4dd05400b3162073b9dd960fcc7.ctex"]
+source_file="res://enemies/frorg.png"
+dest_files=["res://.godot/imported/frorg.png-8b938d858b28721f8969c3811272bb42.ctex"]
 
 [params]
 

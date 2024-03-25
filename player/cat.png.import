@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj5o5jx3rnx3w"
-path="res://.godot/imported/cathurt.png-7ca9eba0148a770827774d6500c65f67.ctex"
+uid="uid://c4ncps5b0u5wk"
+path="res://.godot/imported/cat.png-3a91ad9cffba98883bd9d55ac9ba0508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cathurt.png"
-dest_files=["res://.godot/imported/cathurt.png-7ca9eba0148a770827774d6500c65f67.ctex"]
+source_file="res://player/cat.png"
+dest_files=["res://.godot/imported/cat.png-3a91ad9cffba98883bd9d55ac9ba0508.ctex"]
 
 [params]
 

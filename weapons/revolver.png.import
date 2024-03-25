@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpyi7hlh4og2j"
-path="res://.godot/imported/catwalk1.png-486618a7bdd4bc04617706e7e695b5eb.ctex"
+uid="uid://cby7qlkkpsehm"
+path="res://.godot/imported/revolver.png-d63fb7476a3179b3fc4cbd7736f1a655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/catwalk1.png"
-dest_files=["res://.godot/imported/catwalk1.png-486618a7bdd4bc04617706e7e695b5eb.ctex"]
+source_file="res://weapons/revolver.png"
+dest_files=["res://.godot/imported/revolver.png-d63fb7476a3179b3fc4cbd7736f1a655.ctex"]
 
 [params]
 

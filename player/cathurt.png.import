@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cby7qlkkpsehm"
-path="res://.godot/imported/revolver.png-9c74dfbd69e43e8867f4ad5a4148a45c.ctex"
+uid="uid://cj5o5jx3rnx3w"
+path="res://.godot/imported/cathurt.png-17d2e66468cf30b8157c1fa6705167eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/revolver.png"
-dest_files=["res://.godot/imported/revolver.png-9c74dfbd69e43e8867f4ad5a4148a45c.ctex"]
+source_file="res://player/cathurt.png"
+dest_files=["res://.godot/imported/cathurt.png-17d2e66468cf30b8157c1fa6705167eb.ctex"]
 
 [params]
 
