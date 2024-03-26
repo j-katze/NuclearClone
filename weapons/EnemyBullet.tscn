@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://gok72g1uqrm"]
+
+[ext_resource type="Script" path="res://weapons/EnemyBullet.gd" id="1_onvft"]
+[ext_resource type="Texture2D" uid="uid://ce8nfskqxn6qa" path="res://weapons/bullet.png" id="2_ovirf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ardc"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d56s8"]
+atlas = ExtResource("2_ovirf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pgjn"]
+atlas = ExtResource("2_ovirf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1sgs"]
+atlas = ExtResource("2_ovirf")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8o14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d56s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pgjn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1sgs")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_onvft")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_7ardc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.678516, 0.678516)
+sprite_frames = SubResource("SpriteFrames_x8o14")
+
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

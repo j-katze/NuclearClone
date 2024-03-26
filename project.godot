@@ -11,17 +11,22 @@ config_version=5
 [application]
 
 config/name="NuclearThroneClone"
-run/main_scene="res://main/World.tscn"
+run/main_scene="res://world/World.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalSignals="*res://global/GlobalSignals.gd"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/mode=3
-window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://main/cursor.png"
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://global/cursor.png"
 
 [editor]
 
@@ -101,3 +106,4 @@ shoot={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true

@@ -8,6 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	var cursor_relative = get_node("../Cursor").position - get_node("../Player").position
-	position = get_node("../Player").position + cursor_relative / 3
+	var cursor_relative = get_node("../Cursor").position - get_node("../TileMap/Player").position
+	position = get_node("../TileMap/Player").position + cursor_relative / 3
 	#position = get_node("../Player").position

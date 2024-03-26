@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://csr2hraura2rp"]
+[gd_scene load_steps=35 format=3 uid="uid://csr2hraura2rp"]
 
 [ext_resource type="Script" path="res://enemies/Frorg.gd" id="1_7lscv"]
 [ext_resource type="Texture2D" uid="uid://dyuvi1vt3inec" path="res://enemies/frorg.png" id="2_uk0lm"]
 [ext_resource type="PackedScene" uid="uid://hxh0plu5p4ak" path="res://weapons/Gun.tscn" id="3_4kkdn"]
+[ext_resource type="Script" path="res://enemies/AI.gd" id="4_v2b8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r1l6e"]
 radius = 7.0
@@ -220,25 +221,42 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Frorg" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6x4y"]
+radius = 84.006
+
+[node name="Frorg" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_7lscv")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 5)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_r1l6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g4f2g")
-animation = &"hurt"
+animation = &"idle"
 
 [node name="Gun" parent="." instance=ExtResource("3_4kkdn")]
-position = Vector2(0, 7)
+position = Vector2(0, -4)
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource("4_v2b8f")
+
+[node name="DetectionArea" type="Area2D" parent="AI" groups=["enemies"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectionArea"]
+shape = SubResource("CircleShape2D_m6x4y")
+
+[node name="AttackTimer" type="Timer" parent="AI"]
+one_shot = true
+
 [connection signal="gun_shot" from="Gun" to="." method="handle_bullet"]
+[connection signal="body_entered" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="AI/AttackTimer" to="AI" method="_on_attack_timer_timeout"]

@@ -1,16 +1,23 @@
 extends CharacterBody2D
 class_name Player
 
-signal gun_shot(bullet, pos, direction, damage)
+#signal gun_shot(bullet, pos, direction, damage)
 
 @onready var stat = $Stats
+@onready var gun = $Gun
+@onready var cursor = get_node("../../Cursor")
+var lookdir := Vector2.ZERO
+var movedir := Vector2.ZERO
 const Speed = 100
 
 func _ready():
+	gun.set_state(gun.State.HELD_PLAYER)
 	$AnimatedSprite2D.play()
 
 func _physics_process(delta):
-	var movedir := Vector2(
+	lookdir = cursor.position - position
+	gun.lookdir = self.lookdir
+	movedir = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		).normalized()
@@ -22,14 +29,14 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.speed_scale = 5
-	$AnimatedSprite2D.flip_h = get_node("../Cursor").global_position.x < position.x
+	$AnimatedSprite2D.flip_h = lookdir.x < 0
 
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
-		$Gun.shoot()
+		gun.shoot()
 
 func handle_bullet(bullet, pos, direction, damage):
-	emit_signal("gun_shot", bullet, pos, direction, damage)
+	GlobalSignals.emit_signal("gun_shot", bullet, pos, direction, damage)
 	
-func handle_hit():
+func handle_hit(_damage, _velocity):
 	stat.health -= 1

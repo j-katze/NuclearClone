@@ -1,21 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://darkkgrhlracd"]
+[gd_scene load_steps=8 format=3 uid="uid://darkkgrhlracd"]
 
 [ext_resource type="Script" path="res://weapons/Bullet.gd" id="1_y16bt"]
 [ext_resource type="Texture2D" uid="uid://ce8nfskqxn6qa" path="res://weapons/bullet.png" id="2_g1oed"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7ardc"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgy36"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frkoh"]
+atlas = ExtResource("2_g1oed")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toqqc"]
+atlas = ExtResource("2_g1oed")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pby7g"]
+atlas = ExtResource("2_g1oed")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8w7w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frkoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toqqc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pby7g")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
 
 [node name="Bullet" type="Area2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
 script = ExtResource("1_y16bt")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_7ardc")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qgy36")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_g1oed")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.678516, 0.678516)
+sprite_frames = SubResource("SpriteFrames_g8w7w")
 
 [node name="Timeout" type="Timer" parent="."]
 wait_time = 5.0

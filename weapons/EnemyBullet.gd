@@ -6,6 +6,7 @@ var velocity := Vector2.ZERO
 var damage = 0
 
 func _ready():
+	$AnimatedSprite2D.animation = "default"
 	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.speed_scale = 4
 	$AnimatedSprite2D.flip_h = randi_range(0, 1)
@@ -21,7 +22,7 @@ func _on_timeout_timeout():
 	queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("enemies"):
+	if body.is_in_group("player"):
 		body.handle_hit(damage, velocity)
 	queue_free()
 

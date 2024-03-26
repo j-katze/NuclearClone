@@ -171,23 +171,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-z_index = 10
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ylqk2")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 4)
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_yf1dp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_myi72")
 animation = &"stand"
 
 [node name="Gun" parent="." instance=ExtResource("4_kdyhv")]
-position = Vector2(0, 6)
+position = Vector2(0, -4)
 
 [node name="Stats" type="Node2D" parent="."]
 script = ExtResource("5_ejpur")

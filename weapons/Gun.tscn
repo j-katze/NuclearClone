@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="Gun" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_nytb5")
 metadata/_edit_group_ = true
 
@@ -43,7 +44,7 @@ position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_eqhp2")
 
 [node name="GunHole" type="Marker2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(18, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.1
