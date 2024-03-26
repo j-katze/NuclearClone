@@ -25,13 +25,14 @@ func _process(_delta):
 			if $AttackTimer.is_stopped():
 				$AttackTimer.start(randf_range(1, 4))
 			if player != null && gun != null:
-				panic = Vector2(randf_range(-2, 2), randf_range(-2, 2))
-				var angle_to_player = actor.global_position.direction_to(player.global_position + (player.movedir * 55))
-				actor.lookdir = actor.lookdir.lerp(angle_to_player, 0.1)
+#				panic = Vector2(randf_range(-2, 2), randf_range(-2, 2))
+				var player_angle = actor.global_position.direction_to(player.global_position)
+				var aim_angle = actor.global_position.direction_to(player.global_position + (player.movedir * 55))
+				actor.lookdir = actor.lookdir.lerp(aim_angle, 0.1)
 				if detection_area.overlaps_body(player):
-					actor.movedir = actor.movedir.lerp((angle_to_player * -1) + panic, 0.1)
+					actor.movedir = actor.movedir.lerp((player_angle * -1) + panic, 0.1)
 				else:
-					actor.movedir = actor.movedir.lerp(angle_to_player + panic, 0.1)
+					actor.movedir = actor.movedir.lerp(player_angle + panic, 0.1)
 			else:
 				print("enemy in attack state but target or gun missing")
 		State.ATTACK:

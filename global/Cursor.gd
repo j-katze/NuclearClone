@@ -25,7 +25,7 @@ func _controller_input():
 		)
 	if lookdir.length() < 0.55:
 		lookdir = last_dir.limit_length(0.55)
-	position = get_node("../Player").position + (lookdir.limit_length(1) * distance)
+	position = get_node("../TileMap/Player").position + (lookdir.limit_length(1) * distance)
 	last_dir = lookdir
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

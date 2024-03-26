@@ -1,7 +1,7 @@
 extends Node
 
 @onready var bullet_manager = $BulletManager
-@onready var player = $Player
+@onready var player = get_node("TileMap/Player")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
