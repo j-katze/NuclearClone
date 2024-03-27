@@ -47,5 +47,5 @@ sprite_frames = SubResource("SpriteFrames_eqhp2")
 position = Vector2(18, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true

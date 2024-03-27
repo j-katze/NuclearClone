@@ -222,12 +222,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6x4y"]
-radius = 84.006
+radius = 124.0
 
 [node name="Frorg" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_7lscv")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
@@ -249,7 +249,7 @@ one_shot = true
 script = ExtResource("4_v2b8f")
 
 [node name="DetectionArea" type="Area2D" parent="AI" groups=["enemies"]]
-visible = false
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectionArea"]
 shape = SubResource("CircleShape2D_m6x4y")
@@ -257,6 +257,11 @@ shape = SubResource("CircleShape2D_m6x4y")
 [node name="AttackTimer" type="Timer" parent="AI"]
 one_shot = true
 
+[node name="MoveTimer" type="Timer" parent="AI"]
+one_shot = true
+
 [connection signal="gun_shot" from="Gun" to="." method="handle_bullet"]
+[connection signal="gun_shot" from="Gun" to="AI" method="_on_gun_gun_shot"]
 [connection signal="body_entered" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="AI/AttackTimer" to="AI" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AI/MoveTimer" to="AI" method="_on_move_timer_timeout"]

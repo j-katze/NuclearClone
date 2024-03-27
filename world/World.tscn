@@ -43,6 +43,12 @@ position = Vector2(195, 103)
 [node name="Player" parent="TileMap" instance=ExtResource("2_ts0b4")]
 position = Vector2(151, 156)
 
+[node name="Enemy2" parent="TileMap" instance=ExtResource("6_i3okj")]
+position = Vector2(-14, 73)
+
+[node name="Enemy3" parent="TileMap" instance=ExtResource("6_i3okj")]
+position = Vector2(34, 42)
+
 [node name="Cursor" parent="." instance=ExtResource("3_8164v")]
 z_index = 50
 z_as_relative = false

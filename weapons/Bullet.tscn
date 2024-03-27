@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ce8nfskqxn6qa" path="res://weapons/bullet.png" id="2_g1oed"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgy36"]
-radius = 4.0
-height = 16.0
+radius = 5.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frkoh"]
 atlas = ExtResource("2_g1oed")
@@ -43,6 +43,7 @@ animations = [{
 
 [node name="Bullet" type="Area2D"]
 modulate = Color(1.5, 1.5, 1.5, 1)
+collision_mask = 3
 script = ExtResource("1_y16bt")
 metadata/_edit_group_ = true
 

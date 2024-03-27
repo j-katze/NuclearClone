@@ -41,11 +41,11 @@ animations = [{
 }]
 
 [node name="EnemyBullet" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_onvft")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_7ardc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

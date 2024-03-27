@@ -14,6 +14,7 @@ enum State{
 @export var EnemyBullet = preload("res://weapons/EnemyBullet.tscn")
 @onready var gun_hole = $GunHole
 @onready var cooldown = $Cooldown
+var cooldown_time = 0
 var lookdir = Vector2(1, 0)
 var state = State.DROPPED: set = set_state
 
@@ -27,6 +28,12 @@ func _process(_delta):
 		z_index = -1
 	else:
 		z_index = 1
+	match state:
+		State.HELD_PLAYER:
+			cooldown_time = 0.13
+		State.HELD_ENEMY:
+			cooldown_time = 0.2
+		
 
 func shoot():
 	var bullet_instance
@@ -47,7 +54,7 @@ func shoot():
 				aim_dir = lookdir
 				damage = 1
 		emit_signal("gun_shot", bullet_instance, gun_hole.global_position, aim_dir, damage)
-		cooldown.start()
+		cooldown.start(cooldown_time)
 
 func set_state(new_state):
 	if new_state == state:

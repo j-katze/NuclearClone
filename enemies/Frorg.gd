@@ -8,7 +8,7 @@ enum State{
 
 @onready var ai = $AI
 @onready var gun = $Gun
-const speed = 70
+const speed = 60
 var lookdir := Vector2(1, 0)
 var knockback := Vector2.ZERO
 var knockback_multiplier = 20

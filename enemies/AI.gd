@@ -16,6 +16,7 @@ var actor = null
 var player:Player = null
 var gun:Gun = null
 var panic = Vector2.ZERO
+var shot_count = 0
 
 func _process(_delta):
 	match state:
@@ -24,8 +25,9 @@ func _process(_delta):
 		State.ENGAGE:
 			if $AttackTimer.is_stopped():
 				$AttackTimer.start(randf_range(1, 4))
+			if $MoveTimer.is_stopped():
+				$MoveTimer.start(randf_range(1, 2))
 			if player != null && gun != null:
-#				panic = Vector2(randf_range(-2, 2), randf_range(-2, 2))
 				var player_angle = actor.global_position.direction_to(player.global_position)
 				var aim_angle = actor.global_position.direction_to(player.global_position + (player.movedir * 55))
 				actor.lookdir = actor.lookdir.lerp(aim_angle, 0.1)
@@ -36,8 +38,11 @@ func _process(_delta):
 			else:
 				print("enemy in attack state but target or gun missing")
 		State.ATTACK:
+			actor.movedir = Vector2.ZERO
 			gun.shoot()
-			set_state(State.ENGAGE)
+			if shot_count >= 3:
+				shot_count = 0
+				set_state(State.ENGAGE)
 		State.HURT:
 			pass
 		State.DEAD:
@@ -64,3 +69,11 @@ func _on_detection_area_body_entered(body):
 func _on_attack_timer_timeout():
 	if state != State.DEAD:
 		state = State.ATTACK
+
+
+func _on_gun_gun_shot(_bullet, _pos, _direction, _damage):
+	shot_count += 1
+
+
+func _on_move_timer_timeout():
+	panic = Vector2(randf_range(-1, 1), randf_range(-1, 1))

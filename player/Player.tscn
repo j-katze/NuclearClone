@@ -172,6 +172,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_ylqk2")
 metadata/_edit_group_ = true
