@@ -35,7 +35,7 @@ func _process(_delta):
 			cooldown_time = 0.2
 		
 
-func shoot():
+func shoot(body):
 	var bullet_instance
 	var aim_dir
 	var damage
@@ -46,6 +46,7 @@ func shoot():
 		match state:
 			State.HELD_PLAYER:
 				bullet_instance = PlayerBullet.instantiate()
+				bullet_instance.shooter = body
 				var target = get_node("../../../Cursor").global_position
 				aim_dir = gun_hole.global_position.direction_to(target).normalized()
 				damage = 3

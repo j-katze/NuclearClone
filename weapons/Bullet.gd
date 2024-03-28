@@ -4,6 +4,7 @@ extends Area2D
 var direction := Vector2.ZERO
 var velocity := Vector2.ZERO
 var damage = 0
+var shooter = null
 
 func _ready():
 	$AnimatedSprite2D.play()
@@ -22,8 +23,8 @@ func _on_timeout_timeout():
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
-		body.handle_hit(damage, velocity)
-	queue_free()
+		body.handle_hit(damage, velocity, shooter)
+		queue_free()
 
 func set_direction(dir):
 	direction = dir

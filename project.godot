@@ -25,7 +25,7 @@ GlobalSignals="*res://global/GlobalSignals.gd"
 window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/mode=3
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://global/cursor.png"
 
 [editor]

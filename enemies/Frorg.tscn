@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://csr2hraura2rp"]
+[gd_scene load_steps=38 format=3 uid="uid://csr2hraura2rp"]
 
 [ext_resource type="Script" path="res://enemies/Frorg.gd" id="1_7lscv"]
 [ext_resource type="Texture2D" uid="uid://dyuvi1vt3inec" path="res://enemies/frorg.png" id="2_uk0lm"]
@@ -8,6 +8,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r1l6e"]
 radius = 7.0
 height = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbf32"]
+atlas = ExtResource("2_uk0lm")
+region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0elvn"]
 atlas = ExtResource("2_uk0lm")
@@ -121,6 +125,14 @@ region = Rect2(320, 32, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nbf32")
+}],
+"loop": true,
+"name": &"bark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0elvn")
 }],
 "loop": true,
@@ -221,8 +233,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucqvc"]
+radius = 133.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6x4y"]
-radius = 124.0
+radius = 102.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igxqh"]
+radius = 45.0111
 
 [node name="Frorg" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -236,7 +254,7 @@ shape = SubResource("CapsuleShape2D_r1l6e")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g4f2g")
-animation = &"idle"
+animation = &"bark"
 
 [node name="Gun" parent="." instance=ExtResource("3_4kkdn")]
 position = Vector2(0, -4)
@@ -248,11 +266,26 @@ one_shot = true
 [node name="AI" type="Node2D" parent="."]
 script = ExtResource("4_v2b8f")
 
+[node name="ChaseRadius" type="Area2D" parent="AI"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/ChaseRadius"]
+shape = SubResource("CircleShape2D_ucqvc")
+debug_color = Color(0.0352941, 0.65098, 0, 0.419608)
+
 [node name="DetectionArea" type="Area2D" parent="AI" groups=["enemies"]]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectionArea"]
 shape = SubResource("CircleShape2D_m6x4y")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="FleeRadius" type="Area2D" parent="AI"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/FleeRadius"]
+shape = SubResource("CircleShape2D_igxqh")
+debug_color = Color(0.980392, 0, 0.364706, 0.419608)
 
 [node name="AttackTimer" type="Timer" parent="AI"]
 one_shot = true
@@ -263,5 +296,7 @@ one_shot = true
 [connection signal="gun_shot" from="Gun" to="." method="handle_bullet"]
 [connection signal="gun_shot" from="Gun" to="AI" method="_on_gun_gun_shot"]
 [connection signal="body_entered" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="AI/FleeRadius" to="AI" method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="AI/AttackTimer" to="AI" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="AI/MoveTimer" to="AI" method="_on_move_timer_timeout"]

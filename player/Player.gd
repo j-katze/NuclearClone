@@ -33,7 +33,7 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
-		gun.shoot()
+		gun.shoot(self)
 
 func handle_bullet(bullet, pos, direction, damage):
 	GlobalSignals.emit_signal("gun_shot", bullet, pos, direction, damage)

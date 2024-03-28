@@ -49,7 +49,17 @@ position = Vector2(-14, 73)
 [node name="Enemy3" parent="TileMap" instance=ExtResource("6_i3okj")]
 position = Vector2(34, 42)
 
+[node name="Enemy4" parent="TileMap" instance=ExtResource("6_i3okj")]
+position = Vector2(91, -5)
+
+[node name="Enemy5" parent="TileMap" instance=ExtResource("6_i3okj")]
+position = Vector2(-15, 153)
+
+[node name="Enemy6" parent="TileMap" instance=ExtResource("6_i3okj")]
+position = Vector2(156, -7)
+
 [node name="Cursor" parent="." instance=ExtResource("3_8164v")]
+unique_name_in_owner = true
 z_index = 50
 z_as_relative = false
 
