@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://csr2hraura2rp"]
+[gd_scene load_steps=39 format=3 uid="uid://csr2hraura2rp"]
 
 [ext_resource type="Script" path="res://enemies/Frorg.gd" id="1_7lscv"]
 [ext_resource type="Texture2D" uid="uid://dyuvi1vt3inec" path="res://enemies/frorg.png" id="2_uk0lm"]
+[ext_resource type="Texture2D" uid="uid://c3hmdrojyv6sr" path="res://enemies/alert.png" id="3_4jkda"]
 [ext_resource type="PackedScene" uid="uid://hxh0plu5p4ak" path="res://weapons/Gun.tscn" id="3_4kkdn"]
 [ext_resource type="Script" path="res://enemies/AI.gd" id="4_v2b8f"]
 
@@ -248,13 +249,19 @@ motion_mode = 1
 script = ExtResource("1_7lscv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_r1l6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g4f2g")
-animation = &"bark"
+animation = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -9)
+rotation = 0.53038
+texture = ExtResource("3_4jkda")
 
 [node name="Gun" parent="." instance=ExtResource("3_4kkdn")]
 position = Vector2(0, -4)
@@ -264,6 +271,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AI" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_v2b8f")
 
 [node name="ChaseRadius" type="Area2D" parent="AI"]
@@ -293,7 +301,6 @@ one_shot = true
 [node name="MoveTimer" type="Timer" parent="AI"]
 one_shot = true
 
-[connection signal="gun_shot" from="Gun" to="." method="handle_bullet"]
 [connection signal="gun_shot" from="Gun" to="AI" method="_on_gun_gun_shot"]
 [connection signal="body_entered" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AI/DetectionArea" to="AI" method="_on_detection_area_body_entered"]

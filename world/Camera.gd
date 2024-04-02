@@ -1,13 +1,12 @@
 extends Camera2D
 
+@onready var player = $"/root/World/Ground/Player"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func get_camera_rect() -> Rect2:
+	var pos = get_screen_center_position() # Camera's center
+	var half_size = get_viewport_rect().size * 0.5
+	return Rect2(pos - half_size, pos + half_size)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	var cursor_relative = get_node("../Cursor").position - get_node("../TileMap/Player").position
-	position = get_node("../TileMap/Player").position + cursor_relative / 3
-	#position = get_node("../Player").position
+	var cursor_relative = Cursor.position - player.position
+	position = position.lerp(player.position + cursor_relative / 4, 0.5)

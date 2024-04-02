@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSignals="*res://global/GlobalSignals.gd"
+Cursor="*res://global/Cursor.gd"
 
 [display]
 

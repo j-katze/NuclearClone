@@ -178,6 +178,7 @@ script = ExtResource("1_ylqk2")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_yf1dp")
 

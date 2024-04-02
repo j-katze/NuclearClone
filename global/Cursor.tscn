@@ -18,16 +18,13 @@ animations = [{
 }]
 
 [node name="Cursor" type="Area2D"]
-position = Vector2(-3, -2)
 script = ExtResource("1_dfh3g")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(3, 2)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_1w66d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 2)
 sprite_frames = SubResource("SpriteFrames_ffgvf")

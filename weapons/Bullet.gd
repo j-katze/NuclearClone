@@ -1,9 +1,9 @@
 extends Area2D
 
-@export var speed = 3
+@export var speed = 5
+@export var damage = 0
 var direction := Vector2.ZERO
 var velocity := Vector2.ZERO
-var damage = 0
 var shooter = null
 
 func _ready():
@@ -25,7 +25,9 @@ func _on_body_entered(body):
 	if body.is_in_group("enemies"):
 		body.handle_hit(damage, velocity, shooter)
 		queue_free()
-
+	if body.is_in_group("wall"):
+		queue_free()
+		
 func set_direction(dir):
 	direction = dir
 

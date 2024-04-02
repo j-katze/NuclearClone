@@ -25,6 +25,8 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.handle_hit(damage, velocity)
 		queue_free()
+	if body.is_in_group("wall"):
+		queue_free()
 
 func set_direction(dir):
 	direction = dir
