@@ -45,8 +45,8 @@ func move_walkers():
 					walk.pos += Vector2(-1, 0)
 				3:
 					walk.pos += Vector2(0, -1)
-			walk.pos.x = clamp(walk.pos.x, 1, map_size.x - 2)
-			walk.pos.y = clamp(walk.pos.y, 1, map_size.y - 2)
+			walk.pos.x = clamp(walk.pos.x, 0, map_size.x)
+			walk.pos.y = clamp(walk.pos.y, 0, map_size.y)
 			var cells = []
 			cells.append(Vector2i(walk.pos.x, walk.pos.y))
 			set_cells_terrain_path(1, cells, 0, -1, false)
@@ -69,5 +69,4 @@ func count_floors():
 			var current_cell = get_cell_atlas_coords(1, Vector2i(x, y))
 			if current_cell == Vector2i(-1, -1):
 				floor_count += 1
-	print(floor_count)
 	return floor_count

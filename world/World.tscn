@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://world/World.gd" id="1_nvf3s"]
 [ext_resource type="Texture2D" uid="uid://c5ul034dhk72k" path="res://world/test_tiles.png" id="2_kfyvu"]
 [ext_resource type="PackedScene" uid="uid://dijp1h1ucx30s" path="res://player/Player.tscn" id="2_ts0b4"]
-[ext_resource type="Script" path="res://world/Ground.gd" id="3_7wjkh"]
+[ext_resource type="Script" path="res://world/ProcGen.gd" id="3_7wjkh"]
 [ext_resource type="PackedScene" uid="uid://ckhly0o25kt6s" path="res://global/Cursor.tscn" id="3_8164v"]
 [ext_resource type="Texture2D" uid="uid://12n58k83pr3h" path="res://world/testfloor.png" id="4_b7ype"]
 [ext_resource type="Script" path="res://world/Camera.gd" id="5_pbq7w"]
@@ -1044,8 +1044,8 @@ texture = ExtResource("2_kfyvu")
 5:10/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_3kf4d"]
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "WallSide"
 terrain_set_0/terrain_0/color = Color(0, 0.537255, 0.811765, 1)
