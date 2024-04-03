@@ -8,6 +8,8 @@ var movedir := Vector2.ZERO
 const Speed = 100
 
 func _ready():
+	hide()
+	set_physics_process(false)
 	gun.set_state(gun.State.HELD_PLAYER)
 	$AnimatedSprite2D.play()
 
