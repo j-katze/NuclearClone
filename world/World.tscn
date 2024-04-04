@@ -1277,11 +1277,6 @@ layer_0/name = "shadow"
 z_index = 100
 z_as_relative = false
 
-[node name="TestCam" type="Camera2D" parent="."]
-visible = false
-position = Vector2(400, 400)
-zoom = Vector2(0.275, 0.275)
-
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(151, 156)
 script = ExtResource("5_pbq7w")
@@ -1291,6 +1286,11 @@ visible = false
 z_index = 60
 position = Vector2(-143, -104)
 texture = ExtResource("4_b7ype")
+
+[node name="TestCam" type="Camera2D" parent="."]
+visible = false
+position = Vector2(400, 400)
+zoom = Vector2(0.275, 0.275)
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("7_bxmtl")

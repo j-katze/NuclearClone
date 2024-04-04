@@ -5,10 +5,10 @@ enum TILES{
 		Wall
 }
 
-@export var map_size = Vector2(50, 50)
-@export var percentage_to_fill = 0.50
+@export var map_size = Vector2(70, 70)
+@export var percentage_to_fill = 0.35
 @onready var player = $Player
-var spawn_chance = 0.005
+var spawn_chance = 0.007
 var total_walkers = []
 
 class walker extends Object:
@@ -62,9 +62,10 @@ func move_walkers():
 			if randf() < spawn_chance / 2 and total_walkers.size() > 1:
 				total_walkers.erase(walk)
 		i += 1
-		await get_tree().process_frame
-		print((count_floors() / (map_size.x * map_size.y))*2)
-		if count_floors() / (map_size.x * map_size.y) > percentage_to_fill:
+		#await get_tree().process_frame
+		var filled_percent = count_floors()  / (map_size.x * map_size.y)
+		print(int((filled_percent / percentage_to_fill)*100), "%")
+		if filled_percent >= percentage_to_fill:
 			break
 	player.global_position = (last_pos * 16) + Vector2(1, 1)
 	player.show()
