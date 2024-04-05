@@ -26,16 +26,18 @@ func _ready():
 	pass
 
 func _process(_delta):
+	var behind_wall
 	look_at(global_transform.origin + lookdir)
 	$AnimatedSprite2D.flip_v = global_rotation_degrees < -90 || global_rotation_degrees > 90
-	if global_rotation < 0 || state == State.DROPPED:
+	for body in get_overlapping_bodies():
+			behind_wall = body.is_in_group("wall")
+	if global_rotation < 0 || state == State.DROPPED || (behind_wall && global_rotation_degrees < 120 && global_rotation_degrees > 60):
 		z_index = -1
 	else:
 		z_index = 1
 	match state:
 		State.HELD_ENEMY:
 			reload_time = 0.2
-		
 
 func shoot(body):
 	var bullet_instance

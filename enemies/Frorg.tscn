@@ -249,16 +249,17 @@ motion_mode = 1
 script = ExtResource("1_7lscv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_r1l6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g4f2g")
 animation = &"idle"
+offset = Vector2(0, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 90
+z_as_relative = false
 position = Vector2(1, -9)
 rotation = 0.53038
 texture = ExtResource("3_4jkda")

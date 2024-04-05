@@ -60,6 +60,8 @@ func handle_hit(damage, bullet_velocity, shooter):
 	ai.state = ai.State.ENGAGE
 
 func die():
+	#movedir = knockback
+	velocity = velocity.lerp(Vector2.ZERO, 0.5)
 	state = State.DEAD
 	ai.set_state(ai.State.DEAD)
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -67,4 +69,5 @@ func die():
 	if gun:
 		gun.despawn()
 	gun = null
+	await $StunTimer.timeout
 	set_physics_process(false)

@@ -183,12 +183,12 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_yf1dp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_myi72")
 animation = &"stand"
+offset = Vector2(0, -11)
 
 [node name="Gun" parent="." instance=ExtResource("4_kdyhv")]
-position = Vector2(0, -4)
+position = Vector2(0, -5)
 
 [node name="Stats" type="Node2D" parent="."]
 script = ExtResource("5_ejpur")
