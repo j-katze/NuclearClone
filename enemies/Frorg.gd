@@ -32,7 +32,6 @@ func _physics_process(_delta):
 	if gun:
 		gun.lookdir = self.lookdir
 	velocity = (movedir * speed) + knockback 
-	#move_and_collide(velocity * delta)
 	move_and_slide()
 	if state == State.ALIVE:
 		if velocity.x == 0 && velocity.y == 0:
@@ -60,14 +59,13 @@ func handle_hit(damage, bullet_velocity, shooter):
 	ai.state = ai.State.ENGAGE
 
 func die():
-	#movedir = knockback
 	velocity = velocity.lerp(Vector2.ZERO, 0.5)
 	state = State.DEAD
 	ai.set_state(ai.State.DEAD)
-	$CollisionShape2D.set_deferred("disabled", true)
 	sprite.animation = "dead"
 	if gun:
 		gun.despawn()
 	gun = null
 	await $StunTimer.timeout
+	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
