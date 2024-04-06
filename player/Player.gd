@@ -1,8 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+signal player_shot()
+
 @onready var stat = $Stats
 @onready var gun = $Gun
+
 var lookdir := Vector2.ZERO
 var movedir := Vector2.ZERO
 const Speed = 100
@@ -36,6 +39,7 @@ func _physics_process(_delta):
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
 		gun.shoot(self)
+		emit_signal("player_shot", lookdir)
 
 #func handle_bullet(bullet, pos, direction, damage):
 	#GlobalSignals.emit_signal("gun_shot", bullet, pos, direction, damage)

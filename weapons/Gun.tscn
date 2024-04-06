@@ -41,7 +41,6 @@ animations = [{
 }]
 
 [node name="Gun" type="Area2D"]
-y_sort_enabled = true
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_nytb5")

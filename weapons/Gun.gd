@@ -32,9 +32,9 @@ func _process(_delta):
 	for body in get_overlapping_bodies():
 			behind_wall = body.is_in_group("wall")
 	if global_rotation < 0 || state == State.DROPPED || (behind_wall && global_rotation_degrees < 120 && global_rotation_degrees > 60):
-		z_index = -1
+		z_index = get_parent().z_index
 	else:
-		z_index = 1
+		z_index = get_parent().z_index + 1
 	match state:
 		State.HELD_ENEMY:
 			reload_time = 0.2
